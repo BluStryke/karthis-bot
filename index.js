@@ -5,10 +5,10 @@ const getRoleID = require('./roles.json')
 const fs = require('fs')
 const jsonfile = require('jsonfile')
 const client = new Discord.Client()
+
 const prefix = botconfig.prefix
 
 var saveData = {}
-var items = {}
 
 LoadJsonData()
 
@@ -339,29 +339,6 @@ function SaveJsonData(){
 function InitializeUserSaveData(_serverSaveData, _userID){
     _serverSaveData[_userID] = {
         verifyMessage: 0
-        /*xp: 0,
-        level: 0,
-        last_message: 0,
-        inventory: [[0,5],[1,1]],
-        equipment: {
-            hand: 'empty',
-            secondary: 'empty',
-            head: 'empty',
-            body: 'empty',
-            legs: 'empty',
-            feet: 'empty'
-        },
-        dungeonStats: {
-            inDungeon: false,
-            floor: 0,
-            maxHealth: 100,
-            health: 100
-        },
-        guildStats: {
-            inGuild: false,
-            guild: 'none',
-            rank: 'none'
-        }*/
     }
     SaveJsonData()
 }
@@ -379,45 +356,9 @@ async function GiveRole(guild, userID, role) {
         } else return 'AlreadyHasRole'
     } else return 'UserNotFound' 
 }
-function getItemID(item) {
-    switch (item) {
-        case 'gold':
-            return 0
-        case 'paperbadge':
-            return 1
-        case 'woodenbadge':
-            return 2
-        case 'ironbadge':
-            return 3
-        case 'copperbadge':
-            return 4
-        case 'silverbadge':
-            return 5
-        case 'goldbadge':
-            return 6
-        case 'platinumbadge':
-            return 7
-        case 'nightmarebadge':
-            return 8
-        case 'academyinvitation':
-            return 9
-        case 'whiteraffleticket':
-            return 10
-        case 'greenraffleticket':
-            return 11
-        case 'helmetwrit':
-            return 12
-        case 'chestplatewrit':
-            return 13
-        case 'greaveswrit':
-            return 14
-        default: return item
-    }  
-}
 //
-
 client.on('ready', () => {
     console.log(`${client.user.username} is online!`)
-    client.user.setActivity('!!help', {type: ""})
+    client.user.setActivity('over the server', {type: "WATCHING"})
 })
 client.login(botconfig.token)
