@@ -45,6 +45,8 @@ client.on('raw', event => {
         })
     }
     if (event.t === 'MESSAGE_REACTION_ADD') {
+        guildID = event.d.guild_id
+        userID = event.d.user.id
         var messageID = event.d.message_id
         var emoji = event.d.emoji.name
         if (userID in serverSaveData === false) {
@@ -78,6 +80,8 @@ client.on('raw', event => {
         }).catch(err => console.log(err))
     }
     if (event.t === 'MESSAGE_REACTION_REMOVE') {
+        guildID = event.d.guild_id
+        userID = event.d.user.id
         var messageID = event.d.message_id
         var emoji = event.d.emoji.name
         if (messageID == 756048151818928189n) {
